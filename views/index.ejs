@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .cta-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #0078d4;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            background-color: #106ebe;
+        }
+        
+        .hero {
+            background-color: #f4f4f4;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .feature-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .user-welcome {
+            background-color: #e6f7ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Node.js Web App</h1>
+    </header>
+    
+    <main>
+        <% if (isAuthenticated) { %>
+        <div class="user-welcome">
+            <div>
+                <p>Welcome back, <strong><%= user.name %></strong>!</p>
+                <p>You're currently signed in.</p>
+            </div>
+            <div>
+                <a href="/dashboard" class="cta-button">Go to Dashboard</a>
+            </div>
+        </div>
+        <% } %>
+        
+        <section class="hero">
+            <h1>Welcome to My Node.js Web App</h1>
+            <p>A powerful application with Azure Entra ID authentication and a secure dashboard.</p>
+            <% if (!isAuthenticated) { %>
+            <a href="/login-page" class="cta-button">Sign In</a>
+            <% } %>
+        </section>
+        
+        <div class="features">
+            <div class="feature-card">
+                <h2>Secure Authentication</h2>
+                <p>Powered by Azure Entra ID for enterprise-grade security.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h2>Interactive Dashboard</h2>
+                <p>Access your personalized dashboard after authentication.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h2>Development Mode</h2>
+                <p>Built-in mock authentication system for easy local testing.</p>
+            </div>
+        </div>
+        
+        <section>
+            <h2>About This Application</h2>
+            <p>This Node.js web application demonstrates Azure Entra ID integration with a clean separation between public and protected content.</p>
+            <p>The application features:</p>
+            <ul>
+                <li>Secure authentication flow with Azure Entra ID</li>
+                <li>Protected dashboard for authenticated users</li>
+                <li>Development mockup for easy local testing</li>
+                <li>Session management for persistent login</li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 My Node.js Web App</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - My Node.js Web App</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .error-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .error-code {
+            font-size: 72px;
+            font-weight: bold;
+            color: #d13438;
+            margin: 0;
+        }
+        
+        .error-message {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        
+        .error-details {
+            margin-top: 30px;
+            text-align: left;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            color: #666;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0078d4;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        
+        .back-button:hover {
+            background-color: #106ebe;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Node.js Web App</h1>
+    </header>
+    
+    <main>
+        <div class="error-container">
+            <h1 class="error-code"><%= error.status || 500 %></h1>
+            <h2 class="error-message"><%= message %></h2>
+            <p>Sorry, something went wrong. Please try again later.</p>
+            
+            <a href="/" class="back-button">Back to Home</a>
+            
+            <% if (isDevelopment && error.stack) { %>
+            <div class="error-details">
+                <h3>Error Details</h3>
+                <pre><%= error.stack %></pre>
+            </div>
+            <% } %>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 My Node.js Web App</p>
+    </footer>
+</body>
+</html>
