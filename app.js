@@ -49,11 +49,22 @@ app.use((req, res, next) => {
   next();
 });
 
+
+// Home route - redirect to login page
+app.get('/', (req, res) => {
+  // If user is already authenticated, redirect to dashboard
+  if (req.session.user) {
+    return res.redirect('/dashboard');
+  }
+  // Otherwise redirect to login page
+  res.redirect('/login-page');
+});
+
 // Routes
 app.use('/', authRoutes);
 
-// Home route
-app.get('/', (req, res) => {
+// Public home/about page (optional)
+app.get('/home', (req, res) => {
   res.render('index', { 
     title: 'Home - My Node.js Web App'
   });
